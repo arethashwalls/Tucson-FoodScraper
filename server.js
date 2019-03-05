@@ -2,7 +2,6 @@
 const express = require('express'),
       expHandlebars = require('express-handlebars'),
       mongoose = require('mongoose'),
-      axios = require('axios'),
       morgan = require('morgan');
 
 var app = express();
@@ -17,7 +16,7 @@ app.use(morgan("dev"));
 //Handlebars setup:
 app.engine(
     "handlebars",
-    exphbs({
+    expHandlebars({
       defaultLayout: "main"
     })
 );
