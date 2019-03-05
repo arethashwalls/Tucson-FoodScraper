@@ -26,7 +26,9 @@ module.exports = {
     },
     getArticles: (req, res) => {
         db.Article.find({})
+        .populate('notes')
         .then(data => {
+            console.log(data[0])
             res.render('index', {articles: data});
         })
         .catch(err => console.log(err));
@@ -36,7 +38,7 @@ module.exports = {
         .then(newNote => {
             return db.Article.findOneAndUpdate(
                 { _id: req.params.id }, 
-                { note: newNote._id }, 
+                { $push: {notes: newNote._id} }, 
                 { new: true }
             );
         })
