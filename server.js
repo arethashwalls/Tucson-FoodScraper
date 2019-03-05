@@ -28,5 +28,9 @@ mongoose.connect(
     { useNewUrlParser: true }
 );
 
+//Routing:
+const scrapeRouter = require('./routes/scrapeRoutes');
+app.use('/', scrapeRouter);
+
 //Begin listening:
 app.listen(PORT, () => console.log("App running on port " + PORT + "!"));
