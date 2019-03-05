@@ -1,0 +1,27 @@
+{
+  "name": "webscrapper",
+  "version": "1.0.0",
+  "description": "A simple web-scraping exercise completed as a homework assignment for UA Coding Bootcamp",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arethashwalls/webscrapper.git"
+  },
+  "author": "Aretha SH Walls",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arethashwalls/webscrapper/issues"
+  },
+  "homepage": "https://github.com/arethashwalls/webscrapper#readme"
+}
