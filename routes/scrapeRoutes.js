@@ -1,8 +1,15 @@
-const express = require('express');
+//Imports and setup:
+const express = require('express'),
+      scrapeController = require('../controllers/scrapeController');
 const router = express.Router();
-const scrapeController = require('../controllers/scrapeController');
 
+//Scrape articles:
+router.get('/scrape', scrapeController.scrape);
+
+//Get articles:
 router.get('/', scrapeController.getArticles);
-router.get('/scrape', scrapeController.scrape)
+
+//Post new note:
+router.post('/articles/:id/newnote', scrapeController.postNote);
 
 module.exports = router;

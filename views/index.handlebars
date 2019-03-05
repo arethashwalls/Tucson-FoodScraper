@@ -1,4 +1,10 @@
 {{#each articles}}
     <h1><a href="{{this.url}}" target="_blank">{{this.headline}}</a></h1>
     {{{this.summary}}}
+    <button data-articleId="{{this._id}}">Comment</button>
+    <form id="note-form" action="articles/{{this._id}}/newnote" method="POST">
+        <input name="title" type="text" />
+        <textarea name="body"></textarea>
+        <button type="submit">Add a note</button>
+    </form>
 {{/each}}

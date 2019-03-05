@@ -24,12 +24,23 @@ module.exports = {
         })
         .catch(err => console.log(err));
     },
-
     getArticles: (req, res) => {
         db.Article.find({})
         .then(data => {
             res.render('index', {articles: data});
         })
+        .catch(err => console.log(err));
+    },
+    postNote: (req, res) => {
+        db.Note.create(req.body)
+        .then(newNote => {
+            return db.Article.findOneAndUpdate(
+                { _id: req.params.id }, 
+                { note: newNote._id }, 
+                { new: true }
+            );
+        })
+        .then(() => res.redirect('/'))
         .catch(err => console.log(err));
     }
 }
