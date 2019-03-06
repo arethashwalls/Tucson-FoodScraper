@@ -1,15 +1,42 @@
-{{#each articles}}
-    <h2><a href="{{this.url}}" target="_blank">{{this.headline}}</a></h2>
-    {{{this.summary}}}
-    <button id="comment-button">Comment</button>
-    <button id="view-button">View Comments</button>
-    <form id="note-form" action="articles/{{this._id}}/newnote" method="POST">
-        <input name="title" type="text" />
-        <textarea name="body"></textarea>
-        <button type="submit">Add a note</button>
-    </form>
-    {{#each this.notes}}
-        <h3>{{this.title}}</h3>
-        <p>{{this.body}}</p>
-    {{/each}}
-{{/each}}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="container is-10">
+        <div class="navbar-start">
+            <h1 class="title is-1">Tucson FoodScraper</h1>
+        </div>
+        <div class="navbar-end">
+            <a href="./scrape" class="button is-primary is-medium">Scrape!</a>
+        </div>
+    </div>
+</nav>
+
+<section class="section">
+    <div class="container">
+        <div class="tile is-ancestor">
+            {{#each articles}}
+                <div class="tile is-4 is-parent">
+                    <div class="tile is-child box">
+                        <h2 class="title is-3"><a href="{{this.url}}" target="_blank">{{this.headline}}</a></h2>
+                        <hr />
+                        {{{this.summary}}}
+                        <button id="comment-button">Comment</button>
+                        <button id="view-button">View Comments</button>
+                        <div class="modal">
+                            <div class="modal-background"></div>
+                                <div class="modal-content">
+                                    <form id="note-form" action="articles/{{this._id}}/newnote" method="POST">
+                                        <input name="title" type="text" />
+                                        <textarea name="body"></textarea>
+                                        <button type="submit">Add a note</button>
+                                    </form>
+                                </div>
+                        </div>
+                        {{#each this.notes}}
+                            <h3 class="title is-5">{{this.title}}</h3>
+                            <p>{{this.body}}</p>
+                        {{/each}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
