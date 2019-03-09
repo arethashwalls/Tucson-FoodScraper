@@ -24,7 +24,7 @@ app.set("view engine", "handlebars");
 
 //Database setup:
 mongoose.connect(
-    "mongodb://localhost/newsscrapper", 
+    "mongodb://localhost/newsscraper", 
     { useNewUrlParser: true }
 );
 

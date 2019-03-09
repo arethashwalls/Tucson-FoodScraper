@@ -12,4 +12,7 @@ router.get('/', scrapeController.getArticles);
 //Post new note:
 router.post('/articles/:id/newnote', scrapeController.postNote);
 
+//Delete a note:
+router.delete('/notes/:id', scrapeController.deleteNote);
+
 module.exports = router;

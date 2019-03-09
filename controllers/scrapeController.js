@@ -14,7 +14,9 @@ module.exports = {
                 articleData = {
                     url: $(element).children('link').text(),
                     headline: $(element).children('title').text(),
-                    summary: cleanSummary
+                    summary: cleanSummary,
+                    published: $(element).children('pubDate').text(),
+                    author: $(element).children('creator').text()
                 };
                 db.Article.create(articleData)
                 .then(newArticle => console.log(`NEW ARTICLE CREATED: ${newArticle.headline}\n`))
@@ -26,9 +28,9 @@ module.exports = {
     },
     getArticles: (req, res) => {
         db.Article.find({})
+        .sort({published: -1})
         .populate('notes')
         .then(data => {
-            console.log(data[0])
             res.render('index', {articles: data});
         })
         .catch(err => console.log(err));
@@ -43,6 +45,11 @@ module.exports = {
             );
         })
         .then(() => res.redirect('/'))
+        .catch(err => console.log(err));
+    },
+    deleteNote: (req, res) => {
+        db.Note.deleteOne({_id: req.params.id})
+        .then(response => res.json(response))
         .catch(err => console.log(err));
     }
 }

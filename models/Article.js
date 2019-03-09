@@ -1,5 +1,6 @@
 //Imports:
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"),
+      moment = require('moment');
 const Schema = mongoose.Schema;
 
 //RegEx pattern for matching web URLs, from [https://stackoverflow.com/questions/8188645/javascript-regex-to-match-a-url-in-a-field-of-text]
@@ -21,6 +22,12 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
+    published: {
+        type: Date,
+        default: Date.now(),
+        get: pubDate => moment.utc(pubDate).format('MMMM D, YYYY')
+     },
+    author: String,
     notes: [{
         type: Schema.Types.ObjectId,
         ref: "Note"

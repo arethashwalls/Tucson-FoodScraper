@@ -4,3 +4,6 @@
 .hidden {
     display: none;
 }
+.title.is-5.has-text-white {
+    margin-top: .5rem;
+}
