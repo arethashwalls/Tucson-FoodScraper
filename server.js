@@ -1,3 +1,7 @@
+/********************************************************************************************
+*                          Server Setup for Tucson FoodScraper                              *
+********************************************************************************************/
+
 //Imports:
 const express = require('express'),
       expHandlebars = require('express-handlebars'),

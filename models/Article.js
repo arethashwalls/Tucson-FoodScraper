@@ -3,8 +3,6 @@ const mongoose = require("mongoose"),
       moment = require('moment');
 const Schema = mongoose.Schema;
 
-//RegEx pattern for matching web URLs, from [https://stackoverflow.com/questions/8188645/javascript-regex-to-match-a-url-in-a-field-of-text]
-// const urlRegex = new RegExp("(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?")
 
 //Set up schema:
 const ArticleSchema = new Schema({
@@ -15,6 +13,7 @@ const ArticleSchema = new Schema({
     },
     url: {
         type: String,
+        //RegEx pattern for matching web URLs, from [https://stackoverflow.com/questions/8188645/javascript-regex-to-match-a-url-in-a-field-of-text]
         match: /(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/,
         required: true
     },

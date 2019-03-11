@@ -17,17 +17,17 @@
     <div class="container">
         <div class="tile is-ancestor">
             {{#each articles}}
-                <div class="tile is-4 is-parent">
+                <div class="tile is-4 is-12-touch is-12-tablet is-parent">
                     <div class="tile is-child box">
                         <a href="{{this.url}}" target="_blank"><h2 class="title is-3 has-text-primary">{{this.headline}}</h2></a>
-                        <h3 class="subtitle is-5 has-text-grey">{{this.author}} | {{this.published}}</h3>
+                        <h3 class="subtitle is-5">{{this.author}} | {{this.published}}</h3>
                         <hr />
                         <div class="content">
                             {{{this.summary}}}
                         </div>
                         <div class="buttons is-medium is-right">
-                            <button class="button is-dark comment-button" data-articleid="{{this._id}}"><i class="far fa-comment-dots" alt="Comment"></i></button>
-                            <button class="button is-dark view-button" id="view-notes-for-{{this._id}}" data-articleid="{{this._id}}"><i class="far fa-eye"></i></button>
+                            <button class="button is-primary comment-button" data-articleid="{{this._id}}"><i class="far fa-comment-dots" alt="Comment"></i></button>
+                            <button class="button is-primary view-button" id="view-notes-for-{{this._id}}" data-articleid="{{this._id}}"><i class="far fa-eye"></i></button>
                         </div>
                         <div class="modal" id="modal-{{this._id}}">
                             <div class="modal-background"></div>
