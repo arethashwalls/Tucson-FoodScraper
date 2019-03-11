@@ -1,27 +1,29 @@
-# [Project Title](deployed-project-url)
-## Short description of project (~1 sentence)
-### Authors (if > 1)
+# [Tucson FoodScraper](https://thawing-bayou-57256.herokuapp.com/)
+## A web-scraping application that parses, saves, and displays articles from Tucson Foodie along with associated comments.
 
-Lengthier description (~1 paragraph).
+Tucson FoodScraper is a full-stack web-scraping application that parses Tucson Foodie Magazine's RSS feed, saves the results in a Mongo database, and displays them. Users can comment on articles and delete their comments.
 
 *Project Title* uses:
 
-* [Resource](resource-homepage-url) short description of resource, i.e.:
 * The [Node.js](https://nodejs.org/en/) runtime environment.
+* The [Express](https://expressjs.com/) framework.
+* The [Handlebars](http://handlebarsjs.com/) templating engine.
+* [Cheerio](https://github.com/cheeriojs/cheerio#readme) for server-side DOM parsing.
+* [Morgan](https://github.com/expressjs/morgan#readme) for request-logging.
+* A [Mongo](https://www.mongodb.com/) database.
+* The [Mongoose](https://mongoosejs.com/) ORM.
 
 ### Contents:
-
-(A map of all directories. List relevant files or parent directories as appropriate, with links and descriptions as necessary, i.e.:)
   
 * `controllers`
-  * [`controller.js`](/controllers/controller.js) contains all controller functions.
-* `models` contains models [A](/models/A), [B](/models/B), and [C](/models/C).
+  * [`scrapeController.js`](/controllers/scrapeController.js) contains all controller functions.
+* `models` contains models [Article](/models/Article.js) and [Note](/models/Note.js), as well as an `index.js` file.
 * `public` contains all public, front-end code.
   * `images`
   * `style`
   * [`app.js`](/public/app.js) contains front-end JavaScript.
-* `routes` contains routers [A](/routes/A) and [B](/routes/B).
-* `views` contains views [A](/views/A) and [B](/views/B).
+* `routes` contains the [`scrapeRoutes.js`](/routes/scrapeRoutes.js) router.
+* `views` contains all Handlebars templates.
 * A `gitignore` file
 * NPM's `package-lock.json` and `package.json` files.
 * This `readme`.
@@ -31,19 +33,26 @@ Lengthier description (~1 paragraph).
 
 Project Title's database structure is:
 
-**Table/Collection**
-* Column/Property 1
-* Column/Property 2
+**Article**
+* *headline*: a string article title.
+* *url*: a link to the original article.
+* *summary*: a string article description.
+* *published*: the original published date.
+* *author*: a string author name.
+* *notes* an array of note ObjectIds.
+
+**Note**
+* *title*: a string note title.
+* *body*: a string note description.
 
 ### Views:
 
-Project Title has three views:
-* View 1 allows users to this, that, and whatever.
-* View 2 allows users to this, that, and whatever.
-* View 3 allows users to this, that, and whatever.
+Project Title has only one view, which displays all articles and their associated notes.
 
 ### Controllers:
 
 Project Title has the following routes:
-* GET /here retrieves this data
-* POST /here/new creates a new Model
+* GET `/scrape` scrapes all new articles from [https://tucsonfoodie.com/feed/] (ignoring duplicates), saves them, then redirects to the `/` route.
+* GET `/` fetches all saved articles from the database, populates their notes, and renders them with the `index` template.
+* POST `/articles/:id/newnote` creates a new Note associated with the article with the given ID.
+* DELETE `/notes/:id` deletes the Note with the given ID.
