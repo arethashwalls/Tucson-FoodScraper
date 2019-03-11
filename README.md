@@ -3,7 +3,7 @@
 
 Tucson FoodScraper is a full-stack web-scraping application that parses Tucson Foodie Magazine's RSS feed, saves the results in a Mongo database, and displays them. Users can comment on articles and delete their comments.
 
-*Project Title* uses:
+*Tucson FoodScraper* uses:
 
 * The [Node.js](https://nodejs.org/en/) runtime environment.
 * The [Express](https://expressjs.com/) framework.
@@ -14,7 +14,7 @@ Tucson FoodScraper is a full-stack web-scraping application that parses Tucson F
 * The [Mongoose](https://mongoosejs.com/) ORM.
 
 ### Contents:
-  
+  /notes/:id
 * `controllers`
   * [`scrapeController.js`](/controllers/scrapeController.js) contains all controller functions.
 * `models` contains models [Article](/models/Article.js) and [Note](/models/Note.js), as well as an `index.js` file.
@@ -31,7 +31,7 @@ Tucson FoodScraper is a full-stack web-scraping application that parses Tucson F
 
 ### Models:
 
-Project Title's database structure is:
+Tucson FoodScraper's database structure is:
 
 **Article**
 * *headline*: a string article title.
@@ -47,11 +47,11 @@ Project Title's database structure is:
 
 ### Views:
 
-Project Title has only one view, which displays all articles and their associated notes.
+Tucson FoodScraper has only one view, which displays all articles and their associated notes.
 
 ### Controllers:
 
-Project Title has the following routes:
+Tucson FoodScraper has the following routes:
 * GET `/scrape` scrapes all new articles from [https://tucsonfoodie.com/feed/] (ignoring duplicates), saves them, then redirects to the `/` route.
 * GET `/` fetches all saved articles from the database, populates their notes, and renders them with the `index` template.
 * POST `/articles/:id/newnote` creates a new Note associated with the article with the given ID.
