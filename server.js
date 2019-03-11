@@ -26,11 +26,9 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+const mongoURI = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
 //Database setup:
-mongoose.connect(
-    "mongodb://localhost/newsscraper", 
-    { useNewUrlParser: true }
-);
+mongoose.connect( mongoURI,  { useNewUrlParser: true });
 
 //Routing:
 const scrapeRouter = require('./routes/scrapeRoutes');
